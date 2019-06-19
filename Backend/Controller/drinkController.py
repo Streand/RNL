@@ -28,3 +28,23 @@ def createDrink():
     db.session.add(new_drink)
     db.session.commit()
     return jsonify({'message' : 'New drink added!'})
+
+
+def updateDrink(id):
+
+    data = request.get_json()
+
+    new_drink = Drinks(drink=data['name'])
+
+    drink = Drinks.query.filter_by(id=id).first()
+
+    drink.drink = new_drink.drink
+    db.session.commit()
+    return jsonify({'message' : 'updated!'})
+
+def deleteDrink(id):
+
+    drink = Drinks.query.filter_by(id=id).first()
+    db.session.delete(drink)
+    db.session.commit()
+    return jsonify ({'message' : 'drink deleted!'})
