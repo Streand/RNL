@@ -1,13 +1,7 @@
-from flask import Flask
+from __init__ import app
+from routes import routes_blueprint
 
-app = Flask(__name__)
-
-
-
-@app.route('/')
-def okay():
-    return 'nuisrsgnb'
+app.register_blueprint(routes_blueprint)
 
 if __name__ == '__main__':
-    context = ('cert.pem', 'key.pem')
-    app.run(host='0.0.0.0',ssl_context=context)
+    app.run(host='192.168.1.105',port=5000,ssl_context=('cert.pem', 'key.pem'))
