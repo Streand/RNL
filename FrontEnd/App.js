@@ -8,9 +8,17 @@
 
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
+import axios from 'axios';
 
+axios.get('https://127.0.0.1:5000/food')
+  .then((res) => console.log(res))
+  .catch((error) => console.log(error))
 
 export default class App extends Component {
+
+
+
+
   render() {
     return (
       <View style={styles.container}>
